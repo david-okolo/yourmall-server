@@ -7,16 +7,19 @@ import { searchRouteHandler } from './controllers/searchController';
 import profileRouteHandler from './controllers/profileController';
 import passport from 'passport';
 import { jwtStrategy } from './config/passport';
+import { connect } from './config/database';
 
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
-mongoose.connection.on("error", (err) => {
-    console.log("MongoDB Error: "+err)
-})
-mongoose.connection.on("connected", () => {
-    console.log("MongoDB connected")
-})
+// mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
+// mongoose.connection.on("error", (err) => {
+//     console.log("MongoDB Error: "+err)
+// })
+// mongoose.connection.on("connected", () => {
+//     console.log("MongoDB connected")
+// })
+
+connect();
 
 /**
  * Middleware
